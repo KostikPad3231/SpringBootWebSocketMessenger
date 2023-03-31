@@ -42,10 +42,19 @@
 	<build>
 		<finalName>webSocket</finalName>
 		<plugins>
+<!--			<plugin>-->
+<!--				<groupId>org.springframework.boot</groupId>-->
+<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<outputDirectory>${project.basedir}/binary</outputDirectory>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<mainClass>com.example.demo.DemoApplication</mainClass>
+					<layout>JAR</layout>
 					<outputDirectory>${project.basedir}/binary</outputDirectory>
 				</configuration>
 			</plugin>
