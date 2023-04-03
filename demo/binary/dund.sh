@@ -11,6 +11,8 @@ script_dir=$(dirname "$script_path")
 war_file_path=$(find "$script_dir" -type f -name "*.war")
 war_filename="$(basename "$war_file_path")"
 
+aws_user_ip=ubuntu@3.66.166.10
+
 function undeploy {
   apps_directory="$tomcat_path""/""$webapps""/"
   deployed_file="$apps_directory""$war_filename"
@@ -67,6 +69,10 @@ do
     --dc)
       echo "Try deploy using curl"
       curl_deploy=true
+      ;;
+    --copy-to-aws)
+      echo "Try to copy to AWS"
+      scp -i /home/kostya/Downloads/my-key-pair.pem "$war_file_path" "$aws_user_ip":/home/ubuntu/tomcat/webapps
       ;;
     --un=*)
       username=${1#*=}
